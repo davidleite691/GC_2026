@@ -1,0 +1,6 @@
+public class oldStevePOO {
+        public static void main(String[] args) {
+            FabricarPicareta fabricarPedra = new FabricarPicareta(20,200,"pedra");
+            System.out.println(fabricarPedra);
+    }
+}
