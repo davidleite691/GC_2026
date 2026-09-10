@@ -1,0 +1,23 @@
+public class VacaMae implements Animal{
+    private String som;
+    private String TipoRaca;
+    private String ProdutoColetado;
+    private int ID;
+
+    public VacaMae(String som, String TipoRaca, String ProdutoColetado, int ID){
+        this.som = som;
+        this.TipoRaca= TipoRaca;
+        this.ProdutoColetado = ProdutoColetado;
+        this.ID = ID;
+    }
+
+    public void EmitirSom(){
+        System.out.println("Som que a vaca faz: " + som);
+    }
+    public void TipoDeRaca(){
+        System.out.println("Raca: " + TipoRaca);
+    }
+    public void ColetarProduto(){
+        System.out.println("Voce coletou: " + ProdutoColetado);
+    }
+}
