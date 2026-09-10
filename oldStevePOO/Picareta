@@ -1,0 +1,111 @@
+public class Picareta implements PicaretaInterface {
+
+    String material;
+    int durabilidade;
+    int forca;
+
+    public Picareta(String material, int durabilidade, int forca) {
+        this.material = material;
+        this.durabilidade = durabilidade;
+        this.forca = forca;
+    }
+
+    @Override
+    public String fabricar() {
+
+        System.out.println("\n=== FABRICANDO PICARETA ===");
+        System.out.println("Material: " + material);
+        System.out.println("Durabilidade: " + durabilidade);
+        System.out.println("Força: " + forca);
+
+        if (durabilidade <= 0 || forca <= 0) {
+            System.out.println("Picareta inválida!");
+            return null;
+        }
+
+        System.out.println(
+            "Picareta de " + material + " fabricada com sucesso!"
+        );
+
+        return "Picareta de " + material + " (D: " + durabilidade + ", F: " + forca + ")";
+    }
+
+    @Override
+    public int minerar(int blocos) {
+
+        System.out.println("\n=== MINERANDO COM PICARETA DE " + material.toUpperCase() + " ===");
+
+        System.out.println("Durabilidade atual: " + durabilidade);
+        System.out.println("Força: " + forca);
+        System.out.println("Blocos a minerar: " + blocos);
+
+        if (durabilidade <= 0) {
+            System.out.println("Picareta quebrada!");
+            return 0;
+        }
+
+        int blocosMinerados = 0;
+
+        for (int i = 0; i < blocos; i++) {
+
+            if (durabilidade <= 0) {
+                System.out.println("Picareta quebrou no bloco " + (i + 1));
+                break;
+            }
+
+            durabilidade--;
+            blocosMinerados++;
+        }
+
+        System.out.println("\nMinerados " + blocosMinerados + " blocos");
+
+        System.out.println("Durabilidade restante: " + durabilidade);
+
+        if (durabilidade <= 0) {
+            System.out.println("A picareta de " + material + " quebrou completamente!");
+        }
+
+        return durabilidade;
+    }
+
+    @Override
+    public void reparar(int quantidade) {
+
+        System.out.println("\n=== REPARANDO PICARETA DE " + material.toUpperCase() + " ===");
+
+        System.out.println("Durabilidade atual: " + durabilidade);
+
+        System.out.println("Quantidade a reparar: " + quantidade);
+
+        int limiteMaximo;
+
+        switch (material.toLowerCase()) {
+            case "madeira":
+                limiteMaximo = 50;
+                break;
+
+            case "pedra":
+                limiteMaximo = 70;
+                break;
+
+            case "ferro":
+                limiteMaximo = 100;
+                break;
+
+            case "ouro":
+                limiteMaximo = 30;
+                break;
+
+            default:
+                limiteMaximo = 60;
+        }
+
+        durabilidade += quantidade;
+
+        if (durabilidade > limiteMaximo) {
+            System.out.println("Reparo limitado a " + limiteMaximo);
+            durabilidade = limiteMaximo;
+        }
+        System.out.println("Durabilidade nova: " + durabilidade);
+    }
+}
