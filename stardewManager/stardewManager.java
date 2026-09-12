@@ -3,7 +3,7 @@ public class stardewManager {
     public static void main(String[] args) throws Exception {
         Animal[] animais = {
             new VacaMae(101, "Mimosa", "Holandesa", 7, "Sem filhotes"),
-            new GalinhaMae(102, "Giselda", "Caipira", 1, "Botando ovos"),
+            new GalinhaMae(102, "Giselda", "Caipira", 2, "Botando ovos"),
             new Pintinho(103, "Chiquinha", "Caipira", 1, "Saudável"),
             new Bezerro(104, "Maria", "Holandesa", 1, "Dormindo")
         };
