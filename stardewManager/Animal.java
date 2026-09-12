@@ -1,5 +1,5 @@
 public interface Animal {
     void EmitirSom();
-    void TipoDeRaca();
+    void ExibirDados();
     void ColetarProduto();
 }
