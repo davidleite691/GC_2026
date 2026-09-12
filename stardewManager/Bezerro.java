@@ -12,4 +12,10 @@ public class Bezerro extends VacaMae{
     public void ColetarProduto() {
         System.out.println("Bezerro não produz leite.");
     }
+    @Override 
+    public void ExibirDados() {
+        System.out.println("[ID: " + getId() + "] " + getNome() + " (Vaca filhote)");
+        System.out.println("- Raça: " + getRaca());
+        System.out.println("- Idade: " + getIdade() + " ano | Status: " + getStatus());
+    }
 }
