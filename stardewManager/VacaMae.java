@@ -1,6 +1,6 @@
 public class VacaMae implements Animal{
     private int id;
-    private String nome;
+    private  String nome;
     private String raca;
     private int idade;
     private String status;
@@ -26,5 +26,20 @@ public class VacaMae implements Animal{
     @Override 
     public void ColetarProduto(){
         System.out.println("Voce coletou: Leite");
+    }
+        public int getId(){
+        return id;
+    }
+    public int getIdade(){
+        return idade;
+    }
+    public String getNome(){
+        return nome;
+    }
+    public String getRaca(){
+        return raca;
+    }
+    public String getStatus(){
+        return status;
     }
 }
