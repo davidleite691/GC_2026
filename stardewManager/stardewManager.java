@@ -5,7 +5,7 @@ public class stardewManager {
             new VacaMae(101, "Mimosa", "Holandesa", 7, "Sem filhotes"),
             new GalinhaMae(102, "Giselda", "Caipira", 1, "Botando ovos"),
             new Pintinho(103, "Chiquinha", "Caipira", 1, "Saudável"),
-            new Bezerro(104, "Bento", "Holandesa", 1, "Dormindo")
+            new Bezerro(104, "Maria", "Holandesa", 1, "Dormindo")
         };
 
         int TotalElementos = animais.length;
@@ -24,6 +24,7 @@ public class stardewManager {
                 System.out.println("---------- ANIMAIS NO CURRAL: ----------");
                 for (int i = 0; i < TotalElementos; i++) {
                     animais[i].ExibirDados();
+                    animais[i].EmitirSom();
                 }
                 System.out.println("----------------------------------------");
                 break;
