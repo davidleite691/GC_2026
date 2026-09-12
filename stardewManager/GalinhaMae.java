@@ -1,8 +1,8 @@
 public class GalinhaMae implements Animal{
     private int id;
-    private  String nome;
-    private String raca;
     private int idade;
+    private String nome;
+    private String raca;
     private String status;
 
     public GalinhaMae(int id, String nome, String raca, int idade, String status) {
@@ -20,7 +20,7 @@ public class GalinhaMae implements Animal{
 
     @Override 
     public void ExibirDados(){
-        System.out.println("[ID: " + id + "] " + nome + " (Galinha)");
+        System.out.println("[ID: " + id + "] " + nome + " (Gallus gallus domesticus)");
         System.out.println("- Raça: " + raca);
         System.out.println("- Idade: " + idade + " ano | Status: " + status);
     }
@@ -28,5 +28,21 @@ public class GalinhaMae implements Animal{
     @Override 
     public void ColetarProduto(){
         System.out.println("Voce coletou: Ovos");
+    }
+
+    public int getId(){
+        return id;
+    }
+    public int getIdade(){
+        return idade;
+    }
+    public String getNome(){
+        return nome;
+    }
+    public String getRaca(){
+        return raca;
+    }
+    public String getStatus(){
+        return status;
     }
 }
