@@ -13,4 +13,10 @@ public class Pintinho extends GalinhaMae{
     public void ColetarProduto() {
         System.out.println("Pintinho não produz ovos.");
     }
+    @Override 
+    public void ExibirDados() {
+        System.out.println("[ID: " + getId() + "] " + getNome() + " (Galinha filhote)");
+        System.out.println("- Raça: " + getRaca());
+        System.out.println("- Idade: " + getIdade() + " ano | Status: " + getStatus());
+    }
 }
