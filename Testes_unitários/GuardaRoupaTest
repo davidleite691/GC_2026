@@ -1,0 +1,99 @@
+
+package com.example.demo;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class GuardaRoupaTest {
+
+    private GuardaRoupa guardaRoupa;
+
+    @BeforeEach
+    void preparar() {
+        guardaRoupa = new GuardaRoupa(500.00);
+    }
+
+    // TESTES DO DESCONTO
+
+    @Test
+    @DisplayName("10% de desconto em 200 deve resultar em 180")
+    void deveCalcularDescontoCorretamente() {
+        double resultado = guardaRoupa.precoComDesconto(200, 10);
+
+        assertEquals(180.00, resultado, 0.01);
+    }
+
+    @Test
+    @DisplayName("Desconto negativo deve lançar exceção")
+    void deveRejeitarDescontoNegativo() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            guardaRoupa.precoComDesconto(200, -10);
+        });
+    }
+
+    @Test
+    @DisplayName("Desconto acima de 100 deve lançar exceção")
+    void deveRejeitarDescontoAcimaDe100() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            guardaRoupa.precoComDesconto(200, 150);
+        });
+    }
+
+    // TESTES DO ORÇAMENTO
+
+    @Test
+    @DisplayName("Preço abaixo do orçamento deve ser aceito")
+    void deveAceitarPrecoAbaixoDoOrcamento() {
+        assertTrue(guardaRoupa.cabeNoOrcamento(300));
+    }
+
+    @Test
+    @DisplayName("Preço igual ao orçamento deve ser aceito")
+    void deveAceitarPrecoIgualAoOrcamento() {
+        assertTrue(guardaRoupa.cabeNoOrcamento(500));
+    }
+
+    // TESTES DE GALA
+
+    @Test
+    @DisplayName("Preço abaixo de 200 não é gala")
+    void precoAbaixoDe200NaoEhGala() {
+        assertFalse(guardaRoupa.ehDeGala(150));
+    }
+
+    @Test
+    @DisplayName("Preço igual a 200 não é gala")
+    void precoIgualA200NaoEhGala() {
+        assertFalse(guardaRoupa.ehDeGala(200));
+    }
+
+    @Test
+    @DisplayName("Preço acima de 200 é gala")
+    void precoAcimaDe200EhGala() {
+        assertTrue(guardaRoupa.ehDeGala(250));
+    }
+
+    // DESAFIO EXTRA
+
+    @Test
+    @DisplayName("Duas compras devem atualizar o orçamento")
+    void deveRegistrarDuasCompras() {
+        guardaRoupa.registrarCompra(100);
+        guardaRoupa.registrarCompra(150);
+
+        assertEquals(250.00, guardaRoupa.getOrcamento(), 0.01);
+    }
+
+    @Test
+    @DisplayName("Compra acima do orçamento deve lançar exceção")
+    void deveRejeitarCompraAcimaDoOrcamento() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            guardaRoupa.registrarCompra(600);
+        });
+
+        assertEquals(500.00, guardaRoupa.getOrcamento(), 0.01);
+    }
+}
